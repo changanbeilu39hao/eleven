@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // 修改自动发现策略的逻辑
+        Gate::guessPolicyNamesUsing(function ($modelClass) {
+            // 动态返回模型对应的策略名称, 如: // 'App\Models\User' => 'App\Policies\Userpolicy',
+            return 'App\Policies\\'.class_basename($modelClass).'Policy';
+        });
     }
 }
