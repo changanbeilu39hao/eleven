@@ -77,4 +77,13 @@ class UsersController extends Controller
         session()->flash('success', '修改成功 !');
         return redirect()->route('users.show', $user->id);
     }
+
+    public function destroy(User $user)
+    {
+        $this->authorize('freezy', $user);
+        $user->freezy = 1;
+        $user->save();
+        session()->flash('success', '用户已被停用');
+        return back();
+    }
 }
