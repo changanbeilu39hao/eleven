@@ -7,9 +7,9 @@
 <body>
     <h1>感谢你在 Eleven 进行注册</h1>
     <p>
-        请点击下面的按钮完成注册：
-        <a href="{{ route('confirm_email', $user->activation_token) }}">
-        <button class="btn btn-success">完成注册</button>
+        请点击右方的按钮完成注册：
+        <a href="{{ route('confirm_email', $user->activation_token) }}" class="btn btn-info">
+        完成注册
         </a>
     </p>
 

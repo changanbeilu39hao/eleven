@@ -17,9 +17,13 @@ class StatusesController extends Controller
     {
         
         $this->validate($request, [
-            'content' => 'required|max:140',
-            'img' => 'mimetypes:image/jpeg,image/png,image/bmp',
-            'audio' => 'mimes:mp3'
+            'img' => 'required|mimetypes:image/jpeg,image/png,image/bmp',
+            'audio' => 'required|mimes:mp3',
+            'content' => 'max:140',
+        ],[
+            'img.required'  => '请选择图片',
+            'audio.required' => '请选择音频',
+            'content.max' => '介绍内容过长'
         ]);
         $img = $request->file('img')->store('public/cover');
         $audio = $request->file('audio')->store('public/audio');
@@ -32,5 +36,12 @@ class StatusesController extends Controller
         ]);
         session()->flash('success', '发布成功 ！');
         return redirect()->back();
+    }
+
+    public function messages()
+    {
+        return [
+
+        ];
     }
 }
