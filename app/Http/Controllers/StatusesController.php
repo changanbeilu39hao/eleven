@@ -16,13 +16,13 @@ class StatusesController extends Controller
     public function store(Request $request)
     {
         
-        // $this->validate($request, [
-        //     'content' => 'required|max:140',
-        //     'img' => 'mimetypes:image/jpeg,image/png,image/bmp',
-        //     'audio' => 'mimetypes:audio/mpeg'
-        // ]);
-        $img = $request->file('img')->store('cover');
-        $audio = $request->file('audio')->store('audio');
+        $this->validate($request, [
+            'content' => 'required|max:140',
+            'img' => 'mimetypes:image/jpeg,image/png,image/bmp',
+            'audio' => 'mimes:mp3'
+        ]);
+        $img = $request->file('img')->store('public/cover');
+        $audio = $request->file('audio')->store('public/audio');
 
 
         Auth::user()->statuses()->create([

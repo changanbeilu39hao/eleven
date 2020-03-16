@@ -16,5 +16,6 @@
         </div>
 
     <script src="{{ mix('js/app.js') }}"></script>
+    <script>bsCustomFileInput.init()</script>
     </body>
 </html>
