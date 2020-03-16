@@ -31,3 +31,6 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 
 Route::post('statuses/store', 'StatusesController@store')->name('statuses.store');
 Route::post('statuses/check', 'StatusesController@check')->name('statuses.check');
+
+Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
+Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
